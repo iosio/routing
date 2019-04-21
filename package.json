@@ -17,7 +17,8 @@
     "start": "nwb serve-react-demo --no-hmre",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "quicky": "node quicky.js"
   },
   "dependencies": {
     "@iosio/utils": "^3.1.1"

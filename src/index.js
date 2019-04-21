@@ -1,4 +1,4 @@
-export {
+import {
     goTo,
     subscribe,
     unsubscribe,
@@ -8,3 +8,25 @@ export {
     Router,
     Link
 } from './routing'
+
+export const Routing = {
+    Router,
+    Link,
+    goTo,
+    subscribe,
+    unsubscribe,
+    goBack,
+    goForward,
+    getLoc,
+};
+
+export {
+    Router,
+    Link,
+    goTo,
+    subscribe,
+    unsubscribe,
+    goBack,
+    goForward,
+    getLoc,
+}
