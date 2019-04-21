@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Router functionality renders the correct routes and replaces the history if no path exists before mounting 1`] = `
+<div
+  className="page"
+>
+  <label>
+    Home Page
+  </label>
+  <br />
+  <br />
+  props: 
+  {
+    "path": "/",
+    "name": "Home Page"
+}
+</div>
+`;
+
+exports[`Router functionality renders the login page when navigated to and when notAuth is present on the page props 1`] = `
+<div
+  className="page"
+>
+  <label>
+    Login Page
+  </label>
+  <br />
+  <br />
+  props: 
+  {
+    "path": "/login",
+    "notAuth": true,
+    "name": "Login Page"
+}
+</div>
+`;
+
+exports[`Router functionality renders without crashing 1`] = `null`;
