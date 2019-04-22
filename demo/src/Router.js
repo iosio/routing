@@ -125,7 +125,7 @@ export const RouterTest = () => {
             <Router
                 isAuthenticated={loggedIn}
                 onLogoutPath={'/login'}
-                onLoginPath={'/onlyAuth'}
+                onLoginPath={'/authOnly'}
                 userChange={isAdmin}
                 onUserChangePath={'/'}>
 
