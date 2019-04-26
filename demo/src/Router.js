@@ -21,14 +21,13 @@ export const RouterTest = () => {
     const [isAdmin, setAdmin] = useState(false);
     const [loggedIn, setLoggedIn] = useState(lsdb.get('loggedIn'));
 
-    const go = (here) => {
-        if (!here || !text) return;
-        const path = here || text;
-        goTo(path);
-    };
     const onSubmit = (e) => {
-        e.preventDefault();
-        go();
+        if(e){
+            e.preventDefault();
+        }
+        if(!text) return;
+        console.log(text);
+        goTo(text);
         setText('');
     };
 
@@ -88,6 +87,8 @@ export const RouterTest = () => {
         <Link to={path} className={'btn'} key={i}>{name}</Link>
     ));
 
+    console.log('router updated')
+
     return (
         <React.Fragment>
             <nav className={'nav'}>
@@ -98,7 +99,7 @@ export const RouterTest = () => {
                         <input value={text} onChange={({target}) => setText(target.value)}/>
                     </form>
 
-                    <button className={'btn'} onClick={() => go()}> go</button>
+                    <button className={'btn'} onClick={() => onSubmit()}> go</button>
 
                     <Link to={'/detail'} params={{id: 3, user: "Joe Dirt"}} render={({pathname}) => (
                         <span className={pathname === '/detail/' ? 'currPath' : null}>

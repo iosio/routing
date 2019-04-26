@@ -126,9 +126,7 @@ const renderRoutes = () => routes.map(({Component, ...rest}, i) => (
     <Component key={i} {...rest}/>
 ));
 
-afterEach(() => {
-    cleanup();
-});
+
 
 describe('Router functionality', () => {
 
@@ -188,80 +186,4 @@ describe('Router functionality', () => {
     });
 
 
-    // beforeEach(() => {
-    //     container = document.createElement('div');
-    //     document.body.appendChild(container);
-    // });
-    //
-    // afterEach(() => {
-    //     document.body.removeChild(container);
-    //     container = null;
-    // });
-
-
-    it('Goes to the appropriate route when authState Changes', () => {
-
-        setUrl('/');
-        expect(getUrl()).toBe('/')
-
-        const onLoginPath = '/authOnly';
-
-        const rendered = jest.fn();
-
-        const Page = (props) => {
-            rendered(props.name);
-            return (
-                <div>
-                    {props.aux && props.aux()}
-                    <label>{props.name}</label>
-                </div>
-            )
-        };
-
-        const App = () => {
-            const [hasAuth, setAuth] = useState(false);
-
-            return (
-                <React.Fragment>
-                    <button id={'toggleLogin'} onClick={() => setAuth(!hasAuth)}>loginBtn</button>
-
-                    <Router isAuthenticated={hasAuth}
-                            onLogoutPath={'/login'}
-                            onLoginPath={onLoginPath}>
-
-                        <Page path={'/'} name={'Home'} notAuth
-                              aux={() => <button id={'goTo'} onClick={() => goTo('/login')}>go to login page</button>}
-                        />
-
-                        <Page path={'/login'} name={'loginPage'} notAuth/>
-
-                        <Page path={onLoginPath} authOnly name={'authOnly'}/>
-
-                    </Router>
-                </React.Fragment>
-            )
-        };
-
-        const {container} = render(<App/>);
-
-        fireEvent.click(getById(container, "goTo"));
-
-        expect(rendered).toHaveBeenCalledWith('loginPage');
-
-        expect(getUrl()).toBe('/login');
-
-        fireEvent.click(getById(container, "toggleLogin"));
-
-        expect(rendered).toHaveBeenCalledWith('authOnly');
-
-        expect(getUrl()).toBe('/authOnly')
-
-        fireEvent.click(getById(container, "toggleLogin"));
-
-        expect(getUrl()).toBe('/login')
-
-    })
-
 });
-
-
