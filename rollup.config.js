@@ -188,7 +188,7 @@ if (!!BUILD_LIB) {
         output: {
             dir: outputDir,
             format: 'esm',
-            sourcemap: true,
+            // sourcemap: true,
             chunkFileNames: "common.js"
         },
         plugins: [
