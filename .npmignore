@@ -33,10 +33,5 @@ yarn-error.log*
 
 demoBuild
 /demoBuild
-/index.*
-/routing.*
-/obi.*
-/utils.*
-/common.*
-/xact.*
+node_modules
 /scrap.txt

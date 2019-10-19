@@ -1,6 +1,7 @@
-import {isArray, isObj, extend} from "@iosio/util";
+import {isArray, isObj} from "@iosio/util";
+import {obi} from "@iosio/obi";
 
-export const createRouting = (obi) => {
+export const createRouting = () => {
     let w = window,
         toValue = (mix) => {
             if (!mix) return '';
@@ -54,11 +55,12 @@ export const createRouting = (obi) => {
 
         {url: _lastUrl, pathname: _lastPathname} = initLoc;
 
-    let routing = obi(extend({
+    let routing = obi({
         // pre-pending with $ ignores updates when setting them
         $lastUrl: _lastUrl,
         $lastPathname: _lastPathname,
         $lastType: 'initial',
+        ...initLoc,
         getParams,
         stringifyParams,
         getLocation,
@@ -73,7 +75,7 @@ export const createRouting = (obi) => {
                 ? setTimeout(() => updateLocation({type}))
                 : updateLocation({type});
         }
-    },initLoc));
+    });
 
     routing.routerSwitch = ({root, pathMap, noMatch}) => {
         let next = null, toLast = false,
@@ -93,17 +95,19 @@ export const createRouting = (obi) => {
         return {next, toLast, noChange, replacedLast: $lastType === 'replace'};
     };
 
-
-    let updateLocation = (e) => {
-        routing.$merge(extend({
+    var updateLocation = (e) => {
+        routing.$merge({
+            ...getLocation(),
             $lastUrl: e.type === 'popstate' ? routing.url : _lastUrl,
             $lastPathname: e.type === 'popstate' ? routing.pathname : _lastPathname,
             $lastType: e.type
-        }, getLocation()))
+        })
     };
 
-
     w.addEventListener("popstate", updateLocation);
+
     return routing;
 };
+
+export const routing = createRouting();
 
