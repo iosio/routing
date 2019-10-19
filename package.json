@@ -1,6 +1,6 @@
 {
 	"name": "@iosio/routing",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "super slim history routing",
 	"main": "index.js",
 	"module": "index.js",
@@ -8,7 +8,9 @@
 		"access": "public"
 	},
 	"license": "MIT",
-	"files": ["index.js"],
+	"files": [
+		"index.js"
+	],
 	"keywords": [],
 	"PROJECTS": {
 		"demo": {
