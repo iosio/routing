@@ -1,6 +1,6 @@
 {
 	"name": "@iosio/routing",
-	"version": "0.0.2",
+	"version": "0.1.0",
 	"description": "super slim history routing",
 	"main": "index.js",
 	"module": "index.js",
@@ -8,7 +8,7 @@
 		"access": "public"
 	},
 	"license": "MIT",
-	"files": [],
+	"files": ["index.js"],
 	"keywords": [],
 	"PROJECTS": {
 		"demo": {
@@ -26,7 +26,7 @@
 		"start": "rollup -c --environment SERVE,PROJECT:demo --watch demo/**",
 		"build": "rollup -c --environment BUILD_LIB,PROJECT:lib",
 		"build:demo": "rollup --c --environment BUILD_APP,PROJECT:demo",
-		"test": "echo \"Error: no test specified\" && exit 1",
+		"test": "echo \"Error: no test specified\" && exit 0",
 		"furute:test": "cross-env NODE_ENV=test karma start --single-run --browsers ChromeHeadless karma.config.js"
 	},
 	"peerDependenciesMeta": {},
